@@ -1,0 +1,47 @@
+Agunlar = SPA, construído com TypeScript
+
+npm install -g @angular/cli@17
+ng new nome_projeto --no-standalone
+ng --help
+ng serve
+ng generate component meu-primeiro-componente
+
+@Input() Passar as informações entre da classe pai > filho
+@Output() Como enviar componentes do filho > pai
+
+Ex:
+@Output() onClick: EventEmitter<string> = new EventEmitter();
+
+Declarar variável não iniciada, ex:
+result !: string;
+
+HttpClient - Client do servidor para configurar o endpoint da API
+
+constructor(
+	private httpClient: HttpClient
+)
+
+*ngFor = printar informações de arrays como cat.text, trazendo só os textos setados na API.
+
+===========================================================================
+Rotas = configuradas no arquivo app-routing.modules.ts
+
+No arquivo html, deve ser tageado:
+<router-outlet></router-outlet>
+
+Ele busca as rotas pre-definidas no arquivo app-routing.modules.ts
+
+
+const routes: Routes = [
+	{
+		path: 'home',
+		component: HomeComponent
+	},
+	
+	{
+		path: 'sobre',
+		loadChildren() => import('./sobre/sobre.module).then(module => module.SobreComponent) -> Dessa forma o módulo só é importado quando a página /sobre é requisitada
+	},
+
+	{ path: '', redirectTo: 'home', pathMatch: 'full'} -> Se a rota for vazia, redireciona automaticamente para /home
+]
